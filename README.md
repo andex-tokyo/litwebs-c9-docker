@@ -5,7 +5,7 @@ SUMMER CAMP2018より予定されている開発環境のDocker化のために�
 
     docker pull litwebs/c9
 
-    docker run --name <コンテナ名> -it -p 80:80 -p 4567:4567 litwebs/c9
+    docker run --name <コンテナ名> -it -p 80:8080 -p 4567:4567 litwebs/c9
     
 ## 作成者・問い合わせ
 がはく(slack:@gahaku.tsuchida)
