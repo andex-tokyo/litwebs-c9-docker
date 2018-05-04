@@ -8,7 +8,7 @@ MAINTAINER Yuki Tsuchida(gahaku) <d@gahaku.tech>
 # ------------------------------------------------------------------------------
 # Install base
 RUN apt-get update
-RUN apt-get install -y sudo build-essential g++ curl libssl-dev apache2-utils git libxml2-dev sshfs supervisor libreadline-dev libpam-cracklib libpq-dev libsqlite3-dev lsof && \
+RUN apt-get install -y sudo build-essential g++ curl libssl-dev apache2-utils git libxml2-dev sshfs supervisor libreadline-dev libpam-cracklib libpq-dev libsqlite3-dev lsof&& \
   sed -i 's/^\(\[supervisord\]\)$/\1\nnodaemon=true/' /etc/supervisor/supervisord.conf
   
 # ------------------------------------------------------------------------------
@@ -71,6 +71,10 @@ WORKDIR /home/lit_users/workspace
 
 
 RUN sudo curl -L https://raw.githubusercontent.com/c9/install/master/install.sh | sudo bash
+
+RUN sudo apt-get install wget
+
+RUN curl https://cli-assets.heroku.com/install-ubuntu.sh | sh
 
 # ------------------------------------------------------------------------------
 # Start supervisor, define default command.
