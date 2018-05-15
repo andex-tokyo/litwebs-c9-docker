@@ -10,7 +10,6 @@ MAINTAINER Yuki Tsuchida(gahaku) <d@gahaku.tech>
 RUN apt-get update
 RUN apt-get install -y sudo build-essential g++ curl libssl-dev apache2-utils git libxml2-dev sshfs supervisor libreadline-dev libpam-cracklib libpq-dev libsqlite3-dev lsof&& \
   sed -i 's/^\(\[supervisord\]\)$/\1\nnodaemon=true/' /etc/supervisor/supervisord.conf
-  
 # ------------------------------------------------------------------------------
 # Add users
 RUN useradd -G sudo -m -s /bin/bash lit_users
@@ -33,7 +32,7 @@ RUN git clone https://github.com/sstephenson/ruby-build.git /home/lit_users/.rbe
 
 ENV PATH /home/lit_users/.rbenv/bin:$PATH
 RUN echo "eval '$(rbenv init -)'" >> /home/lit_users/.profile
-RUN . /home/lit_users/.profile 
+RUN . /home/lit_users/.profile
 RUN rbenv install 2.5.1
 
 RUN rbenv global 2.5.1
@@ -52,7 +51,7 @@ RUN scripts/install-sdk.sh
 
 
 # Tweak standlone.js conf
-RUN sed -i -e 's_127.0.0.1_0.0.0.0_g' /home/lit_users/cloud9/configs/standalone.js 
+RUN sed -i -e 's_127.0.0.1_0.0.0.0_g' /home/lit_users/cloud9/configs/standalone.js
 
 # Add supervisord conf
 ADD conf/cloud9.conf /etc/supervisor/conf.d/
